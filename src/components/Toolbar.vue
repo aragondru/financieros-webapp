@@ -8,15 +8,17 @@
         <v-spacer></v-spacer>
 
         <v-toolbar-items>
-            <v-btn 
-            text 
-            dark 
-            class="hidden-xs-only"
-            v-for="item in menuItems"
-            :key="item.title"
+            <v-btn
+            text
+            class="text-capitalize mr-2 "
+            v-show="$vuetify.breakpoint.lgOnly"
+            v-for="(item,key) in menuItems"
+            :key="key"
+            :to="item.to"
             >
-            {{item.title}}
+               {{item.title}}
             </v-btn>
+            
         </v-toolbar-items>
         <v-btn icon>
             <v-icon>mdi-dots-vertical</v-icon>
@@ -31,9 +33,9 @@
         data() {
             return {
                 menuItems:[
-                    {title:"Inicio"},
-                    {title:"Balance general"},
-                    {title:"Estado de resultados"}
+                    {title:"Inicio",to:'/'},
+                    {title:"Balance general",to:'/balancegeneral'},
+                    {title:"Estado de resultados",to:'/estadoresultado'}
                 ],
                 analisisItems:[
                     {title:"Razones financiera"},
